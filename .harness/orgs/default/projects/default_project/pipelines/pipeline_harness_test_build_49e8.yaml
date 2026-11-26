@@ -1,0 +1,25 @@
+pipeline:
+  id: pipeline_harness_test_build_49e8
+  name: pipeline_harness_test_build_49e8
+  stages:
+    - name: Validate
+      id: validate
+      runtime: cloud
+      platform:
+        os: linux
+        arch: amd64
+      clone:
+        enabled: true
+      cache:
+        enabled: true
+      steps:
+        - name: Check Repository
+          id: check_repository
+          run:
+            shell: bash
+            script: |-
+              echo "Repository contains no code to build or test"
+              ls -la
+              cat readme.md || true
+  tags:
+    onboarding: "true"
